@@ -1,10 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { useState } from 'react';
+
 
 export default function App() {
+
+  const [textInputValue, setTextInputValue] = useState('')
+  const [todosList, setTodosList] = useState([])
+
+  const handleTextChange = (text) => {
+    setTextInputValue(text)
+  }
+
+  const handleAdd = () => {
+    setTodosList(prev => prev.concat(textInputValue))
+    console.log(todosList)
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={styles.title}>Todo App 3000!</Text>
+      <View style={styles.input}>
+        <TextInput
+          style={styles.textinput}
+          onChangeText={handleTextChange}
+          value={textInputValue}
+        />
+        <Button title='Add' onPress={handleAdd}></Button>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +36,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#DCDCDC',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+  }, title: {
+    marginTop: 50,
+    fontSize: 30
+  }, textinput: {
+    backgroundColor: '#FFF',
+    width: '70%',
+    marginHorizontal: 20,
+    paddingHorizontal: 10
+  }, input: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
 });
