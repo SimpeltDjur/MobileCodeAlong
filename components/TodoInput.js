@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
     }
 
 })

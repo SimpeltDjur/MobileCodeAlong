@@ -1,17 +1,24 @@
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 
 const Header = () => {
 
     return (
-        <Text style={styles.title}>Todo App 3000!</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Todo App 3000!</Text>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     title: {
-        marginTop: 50,
-        fontSize: 30
+        marginVertical: 40,
+        fontSize: 30,
+        color: '#fff'
+    },
+    container: {
+        alignItems: 'center'
     }
+
 })
 
 export default Header;
