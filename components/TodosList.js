@@ -6,7 +6,7 @@ const TodosList = ({ todosList }) => {
     const _renderItem = ({ item }) => {
         return (
             <View style={styles.todo} >
-                <Text>{item}</Text>
+                <Text>{item.title}</Text>
             </View>
         )
     }

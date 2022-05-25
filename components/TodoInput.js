@@ -1,16 +1,21 @@
-import { View, StyleSheet, Button, TextInput } from "react-native";
+import { Pressable, View, StyleSheet, Button, TextInput, Text, TouchableOpacity } from "react-native";
 import { useState } from 'react';
+import Todo from "../models/Todo";
+
+
 
 const TodoInput = ({ setTodosList }) => {
 
     const [textInputValue, setTextInputValue] = useState('')
+    const [count, setCount] = useState(1);
 
     const handleTextChange = (text) => {
         setTextInputValue(text)
     }
 
     const handleAdd = () => {
-        setTodosList(prev => prev.concat(textInputValue))
+        setTodosList(prev => prev.concat(new Todo(count, textInputValue, false)))
+        setCount(prev => prev + 1);
     }
 
     return (
@@ -20,7 +25,12 @@ const TodoInput = ({ setTodosList }) => {
                 onChangeText={handleTextChange}
                 value={textInputValue}
             />
-            <Button title='Add' onPress={handleAdd}></Button>
+            <Pressable
+                style={styles.addButton}
+                onPress={handleAdd}
+            >
+                <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
         </View>
     )
 }
@@ -36,6 +46,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         marginBottom: 20
+    },
+    addButton: {
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        backgroundColor: 'dodgerblue',
+        borderRadius: 4,
+        marginRight: 10
+    },
+    addButtonText: {
+        color: '#fff'
     }
 
 })
