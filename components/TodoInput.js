@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     input: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        marginBottom: 20
     }
 
 })
